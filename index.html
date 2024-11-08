@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngẫu nhiên số 1-49</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #FFAFBD, #white);
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ngẫu nhiên số 1-49</h1>
+        <div class="number" id="randomNumber">0</div>
+        <button class="button" onclick="generateRandomNumber()">Tạo số ngẫu nhiên</button>
+    </div>
+
+    <script>
+        function generateRandomNumber() {
+            const probability = Math.random();
+            let randomNum;
+
+            if (probability <= 0.20) {
+                randomNum = 19; // 95% xác suất là 19
+            } else {
+                // Tạo số ngẫu nhiên từ 1 đến 49, bỏ qua 13
+                const min = 1;
+                const max = 49;
+                do {
+                    randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+                } while (randomNum === 13 || randomNum === 19); // Tránh 13 và 19 nếu không rơi vào xác suất
+            }
+
+            document.getElementById('randomNumber').textContent = randomNum;
+        }
+    </script>
+</body>
+</html>
